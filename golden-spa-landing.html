@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Spa — Estética Avanzada con Criterio Profesional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Marcellus&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A255;
+    --gold-light: #E4CA82;
+    --gold-dark: #9A7B3A;
+    --gold-shine: #F5E6B8;
+    --cream: #FAF6EE;
+    --cream-dark: #F0E8D8;
+    --olive: #5C5A20;
+    --olive-dark: #3D3B15;
+    --charcoal: #1A1A18;
+    --warm-black: #0D0D0B;
+    --text-dark: #2C2B26;
+    --text-medium: #6B6960;
+    --text-light: #9E9B8E;
+    --white: #FEFDFB;
+    --border-subtle: rgba(197,162,85,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    background: var(--warm-black);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== UTILITY ===== */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--text-medium);
+    margin-top: 1rem;
+  }
+
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 2rem 0;
+  }
+
+  /* ===== PRELOADER ===== */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    background: var(--warm-black);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  #preloader svg {
+    width: 80px;
+    height: 80px;
+  }
+  .preloader-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== NAVIGATION ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: all 0.5s ease;
+  }
+  nav.scrolled {
+    background: rgba(13,13,11,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(197,162,85,0.1);
+  }
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span {
+    font-weight: 300;
+    color: var(--gold-light);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-black);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+    padding: 0.7rem 1.8rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(197,162,85,0.3);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+  .menu-toggle span {
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+    transition: 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--warm-black);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 50%, rgba(197,162,85,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(92,90,32,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(197,162,85,0.04) 0%, transparent 40%);
+  }
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: repeating-linear-gradient(
+      0deg, transparent, transparent 50px, rgba(197,162,85,0.5) 50px, rgba(197,162,85,0.5) 51px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 50px, rgba(197,162,85,0.5) 50px, rgba(197,162,85,0.5) 51px
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    padding: 8rem 0 4rem;
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--white);
+    letter-spacing: -0.03em;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+    font-weight: 300;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2rem;
+    max-width: 520px;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm-black);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    padding: 1.1rem 2.8rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+  }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(197,162,85,0.35);
+  }
+
+  .btn-outline {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(197,162,85,0.3);
+    padding: 1.05rem 2.5rem;
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(197,162,85,0.08);
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  .hero-scroll-indicator span {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+  @keyframes scrollPulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ===== ABOUT / BIENVENIDA ===== */
+  .about {
+    background: var(--cream);
+    padding: 8rem 0;
+    position: relative;
+  }
+  .about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+  .about-image-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--olive-dark), var(--olive));
+    position: relative;
+    overflow: hidden;
+  }
+  .about-image-inner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 40%, rgba(197,162,85,0.2), transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(197,162,85,0.15), transparent 50%);
+  }
+  .about-image-frame {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    bottom: 15px;
+    left: 15px;
+    border: 1px solid var(--gold);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  .about-image-label {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2;
+    color: var(--white);
+  }
+  .about-image-label h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .about-image-label p {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 0.3rem;
+  }
+
+  .about-text .section-title { color: var(--text-dark); }
+  .about-text p {
+    line-height: 1.9;
+    color: var(--text-medium);
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold-dark);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+  }
+
+  /* ===== METODOLOGÍA ===== */
+  .methodology {
+    background: var(--warm-black);
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .methodology::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20%;
+    width: 60%;
+    height: 60%;
+    transform: translateY(-50%);
+    background: radial-gradient(ellipse, rgba(197,162,85,0.04), transparent 70%);
+  }
+  .methodology .section-title { color: var(--white); margin-bottom: 1rem; }
+  .methodology .section-subtitle { color: rgba(255,255,255,0.4); margin-bottom: 4rem; }
+
+  .method-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+  }
+  .method-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(197,162,85,0.1);
+    padding: 2.5rem 2rem;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+  }
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .method-card:hover {
+    background: rgba(197,162,85,0.04);
+    border-color: rgba(197,162,85,0.25);
+    transform: translateY(-4px);
+  }
+  .method-card:hover::before { opacity: 1; }
+
+  .method-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(197,162,85,0.15);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .method-card h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .method-card h4 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  .method-card p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ===== PROGRAMAS ===== */
+  .programs {
+    background: var(--cream);
+    padding: 8rem 0;
+    position: relative;
+  }
+  .programs-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 5rem;
+  }
+  .programs-header .section-label { justify-content: center; }
+  .programs-header .section-label::before { display: none; }
+  .programs-header .section-title { color: var(--text-dark); }
+
+  .program-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .program-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .program-item:nth-child(even) .program-visual { order: 2; }
+  .program-item:nth-child(even) .program-info { order: 1; }
+
+  .program-visual {
+    aspect-ratio: 4/3;
+    position: relative;
+    overflow: hidden;
+  }
+  .program-visual-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .program-visual-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    font-weight: 300;
+    color: rgba(197,162,85,0.1);
+  }
+  .pv-a { background: linear-gradient(135deg, #3a3520 0%, #2a2818 50%, #4a4228 100%); }
+  .pv-b { background: linear-gradient(135deg, #2a2828 0%, #1e1e1c 50%, #3a3530 100%); }
+  .pv-c { background: linear-gradient(135deg, #2e2a20 0%, #1c1a15 50%, #403a28 100%); }
+  .pv-d { background: linear-gradient(135deg, #30301e 0%, #201e15 50%, #44402a 100%); }
+
+  .program-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-black);
+    background: var(--gold);
+    padding: 0.4rem 1rem;
+  }
+
+  .program-info .program-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .program-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-dark);
+    line-height: 1.2;
+  }
+  .program-info h3 span {
+    display: block;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-medium);
+    margin-top: 0.3rem;
+  }
+  .program-info > p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin-top: 1rem;
+  }
+  .program-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .tier {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: rgba(197,162,85,0.04);
+    border-left: 2px solid var(--gold);
+    transition: background 0.3s;
+  }
+  .tier:hover { background: rgba(197,162,85,0.08); }
+  .tier-sessions {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--gold-dark);
+    white-space: nowrap;
+    min-width: 30px;
+  }
+  .tier-info h4 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--text-dark);
+    letter-spacing: 0.02em;
+  }
+  .tier-info p {
+    font-size: 0.82rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-top: 0.2rem;
+  }
+
+  /* ===== ESPECIALIDADES ===== */
+  .specialties {
+    background: var(--warm-black);
+    padding: 8rem 0;
+    position: relative;
+  }
+  .specialties-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 5rem;
+  }
+  .specialties-header .section-label { justify-content: center; }
+  .specialties-header .section-label::before { display: none; }
+  .specialties-header .section-title { color: var(--white); }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .spec-category {
+    border: 1px solid rgba(197,162,85,0.1);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .spec-category::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  .spec-category:hover { border-color: rgba(197,162,85,0.25); }
+  .spec-category:hover::after { opacity: 1; }
+
+  .spec-category h3 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .spec-category > p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .spec-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .spec-item h4 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .spec-item p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .spec-packages {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(197,162,85,0.08);
+    display: flex;
+    gap: 1.5rem;
+  }
+  .spec-pkg {
+    flex: 1;
+    padding: 1rem;
+    background: rgba(197,162,85,0.03);
+  }
+  .spec-pkg strong {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .spec-pkg p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  /* ===== DÍA DE SPA ===== */
+  .spa-day {
+    background: linear-gradient(135deg, var(--olive-dark) 0%, var(--charcoal) 100%);
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .spa-day::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 80%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(197,162,85,0.06), transparent 60%);
+  }
+  .spa-day-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .spa-day-header .section-label { justify-content: center; }
+  .spa-day-header .section-label::before { display: none; }
+  .spa-day-header .section-title { color: var(--white); }
+  .spa-day-header .section-subtitle {
+    color: rgba(255,255,255,0.4);
+    max-width: 500px;
+    margin: 1rem auto 0;
+  }
+
+  .spa-rituals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .ritual-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197,162,85,0.12);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.5s;
+    position: relative;
+  }
+  .ritual-card.featured {
+    background: rgba(197,162,85,0.06);
+    border-color: rgba(197,162,85,0.3);
+    transform: scale(1.03);
+  }
+  .ritual-card.featured::before {
+    content: 'PREMIUM';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--warm-black);
+    background: var(--gold);
+    padding: 0.3rem 1rem;
+  }
+  .ritual-card:hover {
+    border-color: rgba(197,162,85,0.35);
+    transform: translateY(-4px);
+  }
+  .ritual-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+
+  .ritual-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1.5rem;
+    border: 1px solid rgba(197,162,85,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ritual-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .ritual-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .ritual-card h3 small {
+    display: block;
+    font-size: 0.7rem;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 300;
+    margin-top: 0.3rem;
+  }
+  .ritual-card > p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+    margin: 1rem 0 1.5rem;
+  }
+  .ritual-includes {
+    text-align: left;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(197,162,85,0.08);
+  }
+  .ritual-includes strong {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .ritual-includes p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  /* ===== DEPILACIÓN ===== */
+  .depilation {
+    background: var(--cream);
+    padding: 8rem 0;
+  }
+  .depilation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .depilation-info .section-title { color: var(--text-dark); }
+  .depilation-info > p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin-top: 1.5rem;
+  }
+
+  .area-table {
+    margin-top: 2.5rem;
+  }
+  .area-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.88rem;
+  }
+  .area-row:first-child {
+    border-top: 1px solid var(--border-subtle);
+  }
+  .area-name { color: var(--text-dark); }
+  .area-sessions {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--gold-dark);
+  }
+
+  .packages-list {
+    margin-top: 2rem;
+  }
+  .packages-list h4 {
+    font-family: 'Marcellus', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+  }
+  .package-item {
+    padding: 0.8rem 1rem;
+    background: rgba(197,162,85,0.04);
+    border-left: 2px solid var(--gold);
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+  }
+  .package-item strong {
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  /* ===== MEMBRESÍAS ===== */
+  .memberships {
+    background: var(--warm-black);
+    padding: 8rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .memberships::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(197,162,85,0.06), transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(197,162,85,0.04), transparent 50%);
+  }
+  .memberships-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .memberships-header .section-label { justify-content: center; }
+  .memberships-header .section-label::before { display: none; }
+  .memberships-header .section-title { color: var(--white); }
+
+  .membership-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .membership-card {
+    border: 1px solid rgba(197,162,85,0.12);
+    padding: 3rem 2rem;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,0.01);
+  }
+  .membership-card.elite {
+    border-color: rgba(197,162,85,0.4);
+    background: rgba(197,162,85,0.04);
+  }
+  .membership-card.elite::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+  }
+  .membership-card:hover {
+    border-color: rgba(197,162,85,0.35);
+    transform: translateY(-4px);
+  }
+
+  .membership-tier-name {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .membership-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .membership-card h3 small {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.3rem;
+    letter-spacing: 0;
+  }
+  .membership-features {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(197,162,85,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+  .feature-check {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 2;
+  }
+  .membership-benefit {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(197,162,85,0.06);
+    font-size: 0.82rem;
+    color: var(--gold-light);
+    text-align: center;
+    font-weight: 400;
+  }
+
+  /* ===== TESTIMONIOS ===== */
+  .testimonials {
+    background: var(--cream);
+    padding: 8rem 0;
+    position: relative;
+  }
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .testimonials-header .section-label { justify-content: center; }
+  .testimonials-header .section-label::before { display: none; }
+  .testimonials-header .section-title { color: var(--text-dark); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .testimonial-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-subtle);
+    background: var(--white);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    color: rgba(197,162,85,0.15);
+    position: absolute;
+    top: 0.5rem;
+    left: 1.5rem;
+    line-height: 1;
+  }
+  .testimonial-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-medium);
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    background: var(--warm-black);
+    padding: 8rem 0;
+  }
+  .faq-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+  }
+  .faq-header .section-label { justify-content: center; }
+  .faq-header .section-label::before { display: none; }
+  .faq-header .section-title { color: var(--white); }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(197,162,85,0.08);
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%;
+    padding: 1.5rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+  .faq-question span {
+    font-family: 'Marcellus', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.3s;
+  }
+  .faq-question:hover span { color: var(--gold-light); }
+  .faq-toggle {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    transition: transform 0.4s;
+  }
+  .faq-item.active .faq-toggle { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+  }
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+    padding-bottom: 1.5rem;
+  }
+  .faq-answer p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.4);
+    padding-right: 3rem;
+  }
+
+  /* ===== CTA FINAL ===== */
+  .final-cta {
+    padding: 10rem 0;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(197,162,85,0.1) 0%, transparent 60%),
+      linear-gradient(135deg, var(--olive-dark), var(--charcoal));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.02;
+    background-image: repeating-linear-gradient(
+      45deg, transparent, transparent 30px, rgba(197,162,85,0.5) 30px, rgba(197,162,85,0.5) 31px
+    );
+  }
+  .final-cta-content {
+    position: relative;
+    z-index: 2;
+  }
+  .final-cta .section-label { justify-content: center; }
+  .final-cta .section-label::before { display: none; }
+  .final-cta .section-title {
+    color: var(--white);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .final-cta .section-subtitle {
+    color: rgba(255,255,255,0.4);
+    max-width: 500px;
+    margin: 1rem auto 0;
+    font-size: 1.15rem;
+  }
+  .final-cta .hero-actions {
+    justify-content: center;
+    animation: none;
+    opacity: 1;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .contact-item svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .contact-item a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .contact-item a:hover { color: var(--gold-light); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--warm-black);
+    padding: 3rem 0;
+    border-top: 1px solid rgba(197,162,85,0.08);
+    text-align: center;
+  }
+  footer p {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+  }
+  footer .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image { max-width: 400px; }
+    .method-cards { grid-template-columns: 1fr; }
+    .program-item { grid-template-columns: 1fr; gap: 2rem; }
+    .program-item:nth-child(even) .program-visual { order: 0; }
+    .program-item:nth-child(even) .program-info { order: 0; }
+    .spec-grid { grid-template-columns: 1fr; }
+    .spa-rituals { grid-template-columns: 1fr; }
+    .ritual-card.featured { transform: none; }
+    .ritual-card.featured:hover { transform: translateY(-4px); }
+    .depilation-grid { grid-template-columns: 1fr; }
+    .membership-cards { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .menu-toggle { display: flex; }
+    .hero h1 { font-size: clamp(2.5rem, 10vw, 4rem); }
+    .hero-actions { flex-direction: column; align-items: stretch; text-align: center; }
+    .about-stats { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .spec-packages { flex-direction: column; }
+    .contact-row { flex-direction: column; align-items: center; gap: 1rem; }
+    .section-title { font-size: clamp(1.8rem, 6vw, 3rem); }
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(13,13,11,0.97);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s;
+  }
+  .mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu-close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .mobile-menu-close svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <svg viewBox="0 0 80 80" fill="none">
+    <path d="M40 10 C40 10 55 25 55 40 C55 55 40 65 40 65 C40 65 25 55 25 40 C25 25 40 10 40 10Z" stroke="#C5A255" stroke-width="0.8" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M40 15 C40 15 50 27 50 38 C50 50 40 58 40 58 C40 58 30 50 30 38 C30 27 40 15 40 15Z" stroke="#E4CA82" stroke-width="0.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="40" cy="40" r="3" fill="#C5A255" opacity="0.5">
+      <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+  <span class="preloader-text">Golden Spa</span>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">
+    <svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+  <a href="#nosotros" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="#programas" onclick="closeMobileMenu()">Programas</a>
+  <a href="#especialidades" onclick="closeMobileMenu()">Especialidades</a>
+  <a href="#membresias" onclick="closeMobileMenu()">Membresías</a>
+  <a href="#contacto" onclick="closeMobileMenu()">Contacto</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <div class="container">
+    <a href="#" class="nav-logo">Golden <span>Spa</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#metodologia">Metodología</a></li>
+      <li><a href="#programas">Programas</a></li>
+      <li><a href="#especialidades">Especialidades</a></li>
+      <li><a href="#membresias">Membresías</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Agendar Cita</a>
+    <button class="menu-toggle" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Estética Avanzada con Criterio Profesional</p>
+      <h1>El Arte de la<br><em>Transformación</em><br>Personalizada</h1>
+      <p class="hero-desc">Casi dos décadas dedicadas a la salud dérmica. En Golden Spa no realizamos tratamientos, diseñamos planes de transformación basados en ciencia y ética profesional.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Agendar Mi Diagnóstico</a>
+        <a href="#programas" class="btn-outline">Explorar Programas</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <span>Descubrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="nosotros">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <div class="about-image-inner">
+          <div class="about-image-label">
+            <h3>Mónica Espinoza Jumbo</h3>
+            <p>Especialista en Dermocosmiatría</p>
+          </div>
+        </div>
+        <div class="about-image-frame"></div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">Bienvenida</div>
+        <h2 class="section-title">Donde la ciencia se encuentra con el amor propio</h2>
+        <p>Después de casi dos décadas dedicada a la salud dérmica, entiendo que la belleza no es una fórmula mágica, sino un hábito de amor propio guiado por la ciencia.</p>
+        <p>Mi trayectoria con Golden Spa comenzó en marzo de 2016, respaldada por una experiencia clínica cultivada con pasión desde el año 2007. Mi compromiso es acompañarte en el proceso de recuperar la salud y el resplandor de tu piel, basándome siempre en la ética profesional y la excelencia.</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-number">18+</div>
+            <div class="stat-label">Años de Experiencia</div>
+          </div>
+          <div>
+            <div class="stat-number">2007</div>
+            <div class="stat-label">Inicio Clínico</div>
+          </div>
+          <div>
+            <div class="stat-number">2016</div>
+            <div class="stat-label">Fundación Golden Spa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section class="methodology" id="metodologia">
+  <div class="container">
+    <div class="section-label reveal">Diagnóstico de Autor</div>
+    <h2 class="section-title reveal">La Ciencia Detrás de<br>Tu Resultado</h2>
+    <p class="section-subtitle reveal">Metodología de Diagnóstico Molecular de Autor y Análisis Biomecánico Personalizado</p>
+
+    <div class="method-cards">
+      <div class="method-card reveal">
+        <div class="method-number">01</div>
+        <h3>Mapeo Cromático Dérmico</h3>
+        <h4>Luz de Wood</h4>
+        <p>Análisis de fluorescencia para identificar lo que el ojo humano no percibe. Detecta focos bacterianos, pigmentación profunda y niveles de oxidación celular antes de que afecten la superficie.</p>
+      </div>
+      <div class="method-card reveal">
+        <div class="method-number">02</div>
+        <h3>Analítica de Hidratación</h3>
+        <h4>Bio-impedancia</h4>
+        <p>Medición digital de los niveles de agua, lípidos y elasticidad en las capas epidérmicas. Datos reales y numéricos para ajustar la concentración de activos y asegurar una restauración biológica exacta.</p>
+      </div>
+      <div class="method-card reveal">
+        <div class="method-number">03</div>
+        <h3>Escaneo de Micro-Arquitectura</h3>
+        <h4>Macrofotografía</h4>
+        <p>Microscopía cutánea de alta definición para el estudio del relieve dérmico. Analiza la integridad de los poros, la red de colágeno y la barrera hidrolipídica para diseñar una ruta de tratamiento precisa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section class="programs" id="programas">
+  <div class="container">
+    <div class="programs-header reveal">
+      <div class="section-label">Programas de Transformación</div>
+      <h2 class="section-title">Procesos Biológicos, No Soluciones Mágicas</h2>
+      <p class="section-subtitle">Programas escalables diseñados según la necesidad única de tu piel</p>
+    </div>
+
+    <!-- PROGRAMA A -->
+    <div class="program-item reveal">
+      <div class="program-visual">
+        <div class="program-visual-inner">
+          <div class="program-visual-bg pv-a">A</div>
+          <span class="program-badge">Acné Activo</span>
+        </div>
+      </div>
+      <div class="program-info">
+        <div class="program-letter">Programa A</div>
+        <h3>Claridad Absoluta <span>Acné Activo y Control</span></h3>
+        <p>Terapia fotodinámica y oxigenación para una piel libre de bacterias.</p>
+        <div class="program-tiers">
+          <div class="tier">
+            <div class="tier-sessions">1</div>
+            <div class="tier-info">
+              <h4>Rescate</h4>
+              <p>Limpieza clínica profunda + Ozono + Altafrecuencia.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">3</div>
+            <div class="tier-info">
+              <h4>Control</h4>
+              <p>Integración de OPT para reducir glándulas sebáceas y desinflamar.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">6</div>
+            <div class="tier-info">
+              <h4>Saneamiento</h4>
+              <p>Ciclo completo con cóctel de peelings, aparatología, mesoterapia y estabilización de la microbiota.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRAMA B -->
+    <div class="program-item reveal">
+      <div class="program-visual">
+        <div class="program-visual-inner">
+          <div class="program-visual-bg pv-b">B</div>
+          <span class="program-badge">Cicatrices</span>
+        </div>
+      </div>
+      <div class="program-info">
+        <div class="program-letter">Programa B</div>
+        <h3>Reconstrucción Térmica <span>Cicatrices de Acné</span></h3>
+        <p>Mejoramiento de textura y liberación de fibrosis.</p>
+        <div class="program-tiers">
+          <div class="tier">
+            <div class="tier-sessions">1</div>
+            <div class="tier-info">
+              <h4>Estimulación</h4>
+              <p>Microdermoabrasión + Microneedling con inductores de colágeno.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">3</div>
+            <div class="tier-info">
+              <h4>Nivelación</h4>
+              <p>Introducción de la técnica de Subsición y Plasma Pen localizado.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">6</div>
+            <div class="tier-info">
+              <h4>Transformación</h4>
+              <p>Plan maestro con Subsición, Plasma Pen y activos de ADN de Salmón.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRAMA C -->
+    <div class="program-item reveal">
+      <div class="program-visual">
+        <div class="program-visual-inner">
+          <div class="program-visual-bg pv-c">C</div>
+          <span class="program-badge">Antiage</span>
+        </div>
+      </div>
+      <div class="program-info">
+        <div class="program-letter">Programa C</div>
+        <h3>Arquitectura Facial 3D <span>Antiage y Firmeza</span></h3>
+        <p>Reposicionamiento de tejidos sin cirugía.</p>
+        <div class="program-tiers">
+          <div class="tier">
+            <div class="tier-sessions">1</div>
+            <div class="tier-info">
+              <h4>Efecto Tensor</h4>
+              <p>Limpieza ultrasónica + HIFU localizado.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">3</div>
+            <div class="tier-info">
+              <h4>Densificación</h4>
+              <p>HIFU rostro completo + Microneedling con ampollas antiage/regeneradoras.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">6</div>
+            <div class="tier-info">
+              <h4>Lifting Global</h4>
+              <p>Combinación de HIFU, Láser, Radiofrecuencia y Mesoterapia facial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRAMA D -->
+    <div class="program-item reveal">
+      <div class="program-visual">
+        <div class="program-visual-inner">
+          <div class="program-visual-bg pv-d">D</div>
+          <span class="program-badge">Glow</span>
+        </div>
+      </div>
+      <div class="program-info">
+        <div class="program-letter">Programa D</div>
+        <h3>Resplandor Vital <span>Oxygeneo &amp; Glow</span></h3>
+        <p>Exfoliación, oxigenación y nutrición profunda.</p>
+        <div class="program-tiers">
+          <div class="tier">
+            <div class="tier-sessions">1</div>
+            <div class="tier-info">
+              <h4>Alfombra Roja</h4>
+              <p>Protocolo Oxygeneo con cápsula específica. Luminosidad inmediata.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">3</div>
+            <div class="tier-info">
+              <h4>Nutrición</h4>
+              <p>Oxygeneo + Electroporación de Vitamina C y Proteoglicanos.</p>
+            </div>
+          </div>
+          <div class="tier">
+            <div class="tier-sessions">6</div>
+            <div class="tier-info">
+              <h4>Revitalización</h4>
+              <p>Tratamiento profundo combinando procedimientos especializados para una piel protegida contra el estrés oxidativo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section class="specialties" id="especialidades">
+  <div class="container">
+    <div class="specialties-header reveal">
+      <div class="section-label">Protocolos Específicos</div>
+      <h2 class="section-title">Especialidades de<br>Ingeniería Cutánea</h2>
+      <p class="section-subtitle">Tecnología de vanguardia y activos de alta pureza para las necesidades únicas de tu piel</p>
+    </div>
+
+    <div class="spec-grid">
+      <!-- Hidratación -->
+      <div class="spec-category reveal">
+        <h3>Hidratación y Revitalización</h3>
+        <p>Restauración molecular de la barrera cutánea</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Ácido Hialurónico</h4>
+            <p>Infusión molecular de hidratación intensa que restaura la barrera cutánea desde la primera sesión. Ideal para pieles con tirantez o líneas finas por deshidratación.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Mascarillas de Alta Concentración</h4>
+            <p>Mascarilla de alta gama diseñada para retener la humedad celular y devolver la elasticidad perdida.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Ampollas con Activos Premium</h4>
+            <p>Concentrado activo que combina hidratación profunda con efecto tensor inmediato para firmeza y nutrición simultánea.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>Hidratación profunda y mascarillas humectantes.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>Plan integral con mesoterapia y productos intensivos.</p></div>
+        </div>
+      </div>
+
+      <!-- Bioestimulación -->
+      <div class="spec-category reveal">
+        <h3>Bioestimulación y Firmeza</h3>
+        <p>Antiage de nueva generación</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Bioestimulación con PRP</h4>
+            <p>Factores de crecimiento propios para regenerar la piel de forma natural, mejorando firmeza, tono y calidad dérmica.</p>
+          </div>
+          <div class="spec-item">
+            <h4>ADN de Salmón (PDRN)</h4>
+            <p>Biotecnología de punta para reparar el ADN celular y densificar la piel. Ideal para reconstrucción real.</p>
+          </div>
+          <div class="spec-item">
+            <h4>HIFU — Lifting No Invasivo</h4>
+            <p>Ultrasonido de alta intensidad que tensa las capas más profundas, redefiniendo el óvalo facial sin cirugía.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>Estimulación colágena y mesoterapia.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>Radiofrecuencia, HIFU, ADN y Exosomas.</p></div>
+        </div>
+      </div>
+
+      <!-- Control de Acné -->
+      <div class="spec-category reveal">
+        <h3>Ingeniería para Control de Acné</h3>
+        <p>Protocolos de purificación avanzada</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Limpieza Clínica Profesional</h4>
+            <p>Desincrustación técnica para liberar poros de impurezas y bacterias, previniendo futuros brotes de forma segura.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Renovación con Ácido Salicílico</h4>
+            <p>Peeling químico controlado que purifica el folículo y reduce la inflamación.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Sinergia Láser &amp; OPT</h4>
+            <p>Tecnología avanzada que actúa sobre la bacteria del acné y desinflama tejidos. Purificación con Ozono incluida.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>IPL y limpieza profunda.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>OPT, ozono y tratamientos con láser.</p></div>
+        </div>
+      </div>
+
+      <!-- Depilación -->
+      <div class="spec-category reveal">
+        <h3>Depilación Definitiva</h3>
+        <p>Luz altamente selectiva, totalmente indoloro</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Tecnología de Luz Selectiva</h4>
+            <p>Sistemas que actúan directamente sobre el folículo piloso, garantizando una eliminación progresiva y permanente sin dañar los tejidos circundantes.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Áreas Disponibles</h4>
+            <p>Axilas (6 sesiones), Bigote (6), Antebrazo (6), Bikini (10-12), Brasileño (12), Media pierna (8), Piernas completas (8), Facial completo (8).</p>
+          </div>
+          <div class="spec-item">
+            <h4>Paquetes Combinados</h4>
+            <p>Combinaciones personalizadas de múltiples áreas para un tratamiento integral con resultados progresivos y permanentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DÍA DE SPA -->
+<section class="spa-day">
+  <div class="container">
+    <div class="spa-day-header reveal">
+      <div class="section-label">Experiencia Golden</div>
+      <h2 class="section-title">Día de Spa</h2>
+      <p class="section-subtitle">El arte de pausar: rituales exclusivos para reconectar con tu esencia y el bienestar de tu piel</p>
+    </div>
+
+    <div class="spa-rituals">
+      <div class="ritual-card reveal">
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity="0"/><path d="M7 12.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/><path d="M12 8V3M8 9.5L5.5 5.5M16 9.5l2.5-4"/></svg>
+        </div>
+        <h3>Ritual de Bienestar <small>Básico</small></h3>
+        <p>Una pausa esencial que combina la pureza de una limpieza facial hidratante con el calor sanador de las piedras calientes.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Limpieza clínica, mascarilla de hidratación profunda y masaje relax (30 min).</p>
+        </div>
+      </div>
+
+      <div class="ritual-card featured reveal">
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Experiencia Premium <small>Regenerativa</small></h3>
+        <p>El lujo de la ciencia y el descanso. Un protocolo completo de renovación total que integra el poder de los Exosomas para una piel radiante.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Limpieza clínica, bioestimulación con Exosomas, mascarilla regeneradora y masaje de cuerpo completo (60 min).</p>
+        </div>
+      </div>
+
+      <div class="ritual-card reveal">
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Golden Celebration <small>Cumpleaños</small></h3>
+        <p>Diseñado para honrar tu día especial. Todos los beneficios de nuestra experiencia Premium con detalles de cortesía para una celebración memorable.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Protocolo Premium completo y cupcake de cortesía.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBRESÍAS -->
+<section class="memberships" id="membresias">
+  <div class="container">
+    <div class="memberships-header reveal">
+      <div class="section-label">Membresías Golden Exclusive</div>
+      <h2 class="section-title">Planes de Cuidado Continuo</h2>
+      <p class="section-subtitle">Un compromiso con la excelencia para mantener los resultados de tu transformación a largo plazo</p>
+    </div>
+
+    <div class="membership-cards">
+      <div class="membership-card reveal">
+        <div class="membership-tier-name">Essential</div>
+        <h3>Mantenimiento <small>Ideal para mantener una piel sana y equilibrada mes a mes</small></h3>
+        <div class="membership-features">
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 Limpieza Clínica Profunda de Autor</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 Hidratación con Ácido Hialurónico al mes</span>
+          </div>
+        </div>
+        <div class="membership-benefit">10% de descuento en servicios adicionales</div>
+      </div>
+
+      <div class="membership-card reveal">
+        <div class="membership-tier-name">Advanced</div>
+        <h3>Renovación <small>Enfoque preventivo y correctivo para pieles con exigencia moderada</small></h3>
+        <div class="membership-features">
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 Limpieza Clínica mensual</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>2 Sesiones de Microneedling o Peeling Químico</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>2 Ampollas Hidratantes/Antiage</span>
+          </div>
+        </div>
+        <div class="membership-benefit">15% de descuento + Regalo de cumpleaños</div>
+      </div>
+
+      <div class="membership-card elite reveal">
+        <div class="membership-tier-name">Elite</div>
+        <h3>Alta Gama <small>El máximo cuidado para una transformación total y constante</small></h3>
+        <div class="membership-features">
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>1 Limpieza Clínica al mes</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>4 Sesiones de tecnología avanzada (HIFU, Láser o Bioestimulación)</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feature-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>4 Ampollas Hidratantes/Antiage</span>
+          </div>
+        </div>
+        <div class="membership-benefit">20% de descuento global + Día de Spa por cumpleaños</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonials-header reveal">
+      <div class="section-label">Testimonios</div>
+      <h2 class="section-title">Historias de Transformación</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p>El Diagnóstico fue un antes y un después. Ver las necesidades reales de mi piel bajo la Lámpara de Wood me dio la seguridad de que estaba en manos de una verdadera experta.</p>
+        <div class="testimonial-author">— Verónica G.</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p>Tenía miedo de los procedimientos invasivos, pero el HIFU en Golden Spa fue la solución. Mi óvalo facial se redefinió y la piel del cuello recuperó su firmeza. El resultado es tan natural que todos me dicen que me veo descansada.</p>
+        <div class="testimonial-author">— Claudia M.</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <p>Tener mi plan mensual me quitó la preocupación de qué hacerme. Mi piel simplemente está siempre impecable.</p>
+        <div class="testimonial-author">— Beatriz L.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="section-label">Claridad y Compromiso</div>
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Por qué no publican precios de forma general?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Al ser protocolos de alta gama y estrictamente personalizados, el presupuesto definitivo se establece tras el Diagnóstico Molecular. Nuestro objetivo es que realices una inversión precisa, pagando exclusivamente por los activos y la tecnología que tu piel demanda.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Tengo piel sensible, ¿puedo realizarme tratamientos?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutamente. Contamos con protocolos especializados que utilizan Centella Asiática, Ceramidas y Terapia LED diseñados específicamente para desinflamar, calmar y fortalecer la barrera hidrolipídica de las pieles más reactivas.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Sus tratamientos son aptos para hombres?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutamente. La piel masculina tiene características específicas que requieren protocolos de ingeniería cutánea personalizados. Diseñamos experiencias de cuidado que respetan y potencian la salud dérmica de todos nuestros pacientes.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿A qué edad es recomendable iniciar con estos cuidados?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>No existe una edad fija, ya que la piel tiene necesidades biológicas en cada etapa. Nuestra filosofía es la prevención inteligente: es mucho más efectivo mantener la salud de la piel hoy que intentar revertir daños profundos mañana.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Debo llevar la piel lavada o sin maquillaje a mi cita?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>No es necesario. Como parte de nuestra fase de higienización técnica, nosotros nos encargamos de la preparación profunda del tejido. Solo te pedimos venir con disposición para disfrutar de tu transformación.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Qué sucede si no puedo asistir a mi sesión de membresía?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Tus sesiones no se pierden; puedes reprogramarlas dentro del mismo trimestre o transferirlas a una persona especial para que disfrute de la experiencia Golden Spa en tu lugar.</p>
+        </div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>¿Quién realiza los procedimientos médico-estéticos?</span>
+          <svg class="faq-toggle" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Todos los procedimientos de medicina estética (como Toxina Botulínica o Rellenos) son realizados por nuestra Especialista Médica Aliada, integrando la medicina con nuestra visión estética de autor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta" id="contacto">
+  <div class="container">
+    <div class="final-cta-content reveal">
+      <div class="section-label">Tu Transformación Comienza Aquí</div>
+      <h2 class="section-title">En Golden Spa, no solo cuidamos tu piel,<br><em>diseñamos su futuro</em></h2>
+      <p class="section-subtitle">El primer paso hacia tu mejor versión comienza con un diagnóstico preciso</p>
+      <div class="hero-actions" style="margin-top:3rem">
+        <a href="https://wa.me/5930982182609" target="_blank" class="btn-primary">Agendar Mi Diagnóstico</a>
+        <a href="https://wa.me/5930982182609" target="_blank" class="btn-outline">WhatsApp: 0982182609</a>
+      </div>
+      <div class="contact-row">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+5930982182609">0982182609</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <a href="https://instagram.com/golden_spa_gye" target="_blank">@GOLDEN_SPA_GYE</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          <a href="#" target="_blank">GOLDEN SPA</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          <a href="https://tiktok.com/@golden_spa_" target="_blank">@GOLDEN_SPA_</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Golden Spa ®</div>
+    <p>La ciencia es nuestra herramienta; tu confianza, nuestra mayor maestría.</p>
+    <p style="margin-top:0.5rem">© 2024 Golden Spa — Guayaquil, Ecuador. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // Preloader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('preloader').classList.add('hidden');
+    }, 1200);
+  });
+
+  // Navbar scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  }
+
+  // Mobile menu
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.add('active');
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobileMenu').classList.remove('active');
+  }
+</script>
+</body>
+</html>
