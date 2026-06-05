@@ -1680,59 +1680,23 @@
     stroke-width: 1.5;
   }
 
-  /* ===== SECTION DOTS (ESCRITORIO) ===== */
-  .section-dots {
-    position: fixed;
-    right: 1.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 500;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
+  /* ===== SCROLL POR SECCIONES ===== */
+  html {
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
   }
-  .section-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: transparent;
-    border: 1px solid rgba(197,162,85,0.4);
-    cursor: pointer;
-    transition: all 0.35s ease;
-    position: relative;
-    text-decoration: none;
-    display: block;
-    flex-shrink: 0;
+  html::-webkit-scrollbar { display: none; }
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 0;
   }
-  .section-dot:hover,
-  .section-dot.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    transform: scale(1.5);
+  footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
-  .section-dot::after {
-    content: attr(data-label);
-    position: absolute;
-    right: calc(100% + 14px);
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.58rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    background: rgba(13,13,11,0.9);
-    padding: 0.28rem 0.65rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s;
-  }
-  .section-dot:hover::after { opacity: 1; }
-  @media (max-width: 1100px) {
-    .section-dots { display: none; }
-  }
+  /* El trust-bar fluye junto al hero visualmente */
+  .trust-bar { scroll-snap-align: none; }
 
   /* ===== BARRA DE SECCIONES (MÓVIL) ===== */
   .section-tabs {
@@ -1888,18 +1852,7 @@
   </div>
 </nav>
 
-<!-- NAVEGACIÓN POR PUNTOS (ESCRITORIO) -->
-<nav class="section-dots" aria-label="Navegación por secciones">
-  <a href="#inicio" class="section-dot active" data-label="Inicio" aria-label="Ir a Inicio"></a>
-  <a href="#nosotros" class="section-dot" data-label="Nosotros" aria-label="Ir a Nosotros"></a>
-  <a href="#metodologia" class="section-dot" data-label="Metodología" aria-label="Ir a Metodología"></a>
-  <a href="#programas" class="section-dot" data-label="Programas" aria-label="Ir a Programas"></a>
-  <a href="#especialidades" class="section-dot" data-label="Especialidades" aria-label="Ir a Especialidades"></a>
-  <a href="#membresias" class="section-dot" data-label="Membresías" aria-label="Ir a Membresías"></a>
-  <a href="#contacto" class="section-dot" data-label="Contacto" aria-label="Ir a Contacto"></a>
-</nav>
-
-<!-- BARRA DE SECCIONES (MÓVIL) -->
+<!-- BARRA DE SECCIONES (MÓVIL / TABLET) -->
 <div class="section-tabs" id="sectionTabs" role="navigation" aria-label="Secciones de la página">
   <a href="#inicio" class="stab active">Inicio</a>
   <a href="#nosotros" class="stab">Nosotros</a>
@@ -2693,10 +2646,9 @@
     document.body.style.overflow = '';
   }
 
-  // Active nav link + section dots + mobile tabs highlighting on scroll
+  // Resaltar sección activa en nav y barra de pestañas
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const sectionDots = document.querySelectorAll('.section-dot');
   const sectionStabs = document.querySelectorAll('.section-tabs .stab');
 
   function highlightNav() {
@@ -2710,14 +2662,10 @@
         navLinks.forEach(link => {
           link.classList.toggle('active', link.getAttribute('href') === href);
         });
-        sectionDots.forEach(dot => {
-          dot.classList.toggle('active', dot.getAttribute('href') === href);
-        });
         sectionStabs.forEach(tab => {
-          tab.classList.toggle('active', tab.getAttribute('href') === href);
-          if (tab.getAttribute('href') === href) {
-            tab.scrollIntoView({ inline: 'nearest', behavior: 'smooth' });
-          }
+          const isActive = tab.getAttribute('href') === href;
+          tab.classList.toggle('active', isActive);
+          if (isActive) tab.scrollIntoView({ inline: 'nearest', behavior: 'smooth' });
         });
       }
     });
