@@ -1679,6 +1679,164 @@
     fill: none;
     stroke-width: 1.5;
   }
+
+  /* ===== SECTION DOTS (ESCRITORIO) ===== */
+  .section-dots {
+    position: fixed;
+    right: 1.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  .section-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(197,162,85,0.4);
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    text-decoration: none;
+    display: block;
+    flex-shrink: 0;
+  }
+  .section-dot:hover,
+  .section-dot.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.5);
+  }
+  .section-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: calc(100% + 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(13,13,11,0.9);
+    padding: 0.28rem 0.65rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .section-dot:hover::after { opacity: 1; }
+  @media (max-width: 1100px) {
+    .section-dots { display: none; }
+  }
+
+  /* ===== BARRA DE SECCIONES (MÓVIL) ===== */
+  .section-tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 800;
+    background: rgba(13,13,11,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(197,162,85,0.15);
+    display: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 0.5rem;
+  }
+  .section-tabs::-webkit-scrollbar { display: none; }
+  .section-tabs .stab {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 0.85rem 1rem;
+    white-space: nowrap;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+    flex-shrink: 0;
+    display: inline-block;
+  }
+  .section-tabs .stab:hover,
+  .section-tabs .stab.active {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+  @media (max-width: 1100px) {
+    .section-tabs { display: flex; }
+    body { padding-bottom: 48px; }
+    .whatsapp-float { bottom: calc(1.5rem + 48px) !important; }
+  }
+  @media (max-width: 768px) {
+    .whatsapp-float { bottom: calc(1rem + 48px) !important; right: 1rem !important; }
+  }
+
+  /* ===== SLOTS DE IMÁGENES ===== */
+  /* Hero fondo */
+  .hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .hero-bg-img[src=""] { display: none; }
+  .hero-bg { z-index: 1; }
+  .hero-pattern { z-index: 1; }
+
+  /* Foto fundadora */
+  .founder-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 1;
+  }
+  .founder-photo[src=""] { display: none; }
+
+  /* Imágenes en programas */
+  .program-visual-bg { position: relative; }
+  .program-visual-bg > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .program-visual-bg > img[src=""] { display: none; }
+
+  /* Imagen en ritual cards */
+  .ritual-img-area {
+    width: calc(100% + 4rem);
+    margin: -2.5rem -2rem 2rem;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(61,59,21,0.7) 0%, rgba(13,13,11,0.85) 100%);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .ritual-img-area > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .ritual-img-area > img[src=""] { display: none; }
 </style>
 </head>
 <body>
@@ -1730,10 +1888,33 @@
   </div>
 </nav>
 
+<!-- NAVEGACIÓN POR PUNTOS (ESCRITORIO) -->
+<nav class="section-dots" aria-label="Navegación por secciones">
+  <a href="#inicio" class="section-dot active" data-label="Inicio" aria-label="Ir a Inicio"></a>
+  <a href="#nosotros" class="section-dot" data-label="Nosotros" aria-label="Ir a Nosotros"></a>
+  <a href="#metodologia" class="section-dot" data-label="Metodología" aria-label="Ir a Metodología"></a>
+  <a href="#programas" class="section-dot" data-label="Programas" aria-label="Ir a Programas"></a>
+  <a href="#especialidades" class="section-dot" data-label="Especialidades" aria-label="Ir a Especialidades"></a>
+  <a href="#membresias" class="section-dot" data-label="Membresías" aria-label="Ir a Membresías"></a>
+  <a href="#contacto" class="section-dot" data-label="Contacto" aria-label="Ir a Contacto"></a>
+</nav>
+
+<!-- BARRA DE SECCIONES (MÓVIL) -->
+<div class="section-tabs" id="sectionTabs" role="navigation" aria-label="Secciones de la página">
+  <a href="#inicio" class="stab active">Inicio</a>
+  <a href="#nosotros" class="stab">Nosotros</a>
+  <a href="#programas" class="stab">Programas</a>
+  <a href="#especialidades" class="stab">Especialidades</a>
+  <a href="#membresias" class="stab">Membresías</a>
+  <a href="#contacto" class="stab">Contacto</a>
+</div>
+
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-pattern"></div>
+  <!-- IMAGEN FONDO HERO: reemplaza src="" con la URL de tu imagen, ej: src="img/hero.jpg" -->
+  <img src="" alt="" class="hero-bg-img" aria-hidden="true">
   <div class="container">
     <div class="hero-content">
       <p class="hero-eyebrow">Estética Avanzada con Criterio Profesional</p>
@@ -1784,6 +1965,8 @@
     <div class="about-grid">
       <div class="about-image reveal">
         <div class="about-image-inner">
+          <!-- FOTO FUNDADORA: reemplaza src="" con la URL de la foto de Mónica, ej: src="img/monica.jpg" -->
+          <img src="" alt="Mónica Espinoza Jumbo — Especialista en Dermocosmiatría" class="founder-photo" loading="lazy">
           <div class="about-image-label">
             <h3>Mónica Espinoza Jumbo</h3>
             <p>Especialista en Dermocosmiatría</p>
@@ -1858,7 +2041,11 @@
     <div class="program-item reveal">
       <div class="program-visual">
         <div class="program-visual-inner">
-          <div class="program-visual-bg pv-a">A</div>
+          <div class="program-visual-bg pv-a">
+            <!-- IMAGEN PROGRAMA A: reemplaza src="" con tu imagen, ej: src="img/programa-acne.jpg" -->
+            <img src="" alt="Programa A — Claridad Absoluta" loading="lazy">
+            A
+          </div>
           <span class="program-badge">Acné Activo</span>
         </div>
       </div>
@@ -1896,7 +2083,11 @@
     <div class="program-item reveal">
       <div class="program-visual">
         <div class="program-visual-inner">
-          <div class="program-visual-bg pv-b">B</div>
+          <div class="program-visual-bg pv-b">
+            <!-- IMAGEN PROGRAMA B: reemplaza src="" con tu imagen, ej: src="img/programa-cicatrices.jpg" -->
+            <img src="" alt="Programa B — Reconstrucción Térmica" loading="lazy">
+            B
+          </div>
           <span class="program-badge">Cicatrices</span>
         </div>
       </div>
@@ -1934,7 +2125,11 @@
     <div class="program-item reveal">
       <div class="program-visual">
         <div class="program-visual-inner">
-          <div class="program-visual-bg pv-c">C</div>
+          <div class="program-visual-bg pv-c">
+            <!-- IMAGEN PROGRAMA C: reemplaza src="" con tu imagen, ej: src="img/programa-antiage.jpg" -->
+            <img src="" alt="Programa C — Arquitectura Facial 3D" loading="lazy">
+            C
+          </div>
           <span class="program-badge">Antiage</span>
         </div>
       </div>
@@ -1972,7 +2167,11 @@
     <div class="program-item reveal">
       <div class="program-visual">
         <div class="program-visual-inner">
-          <div class="program-visual-bg pv-d">D</div>
+          <div class="program-visual-bg pv-d">
+            <!-- IMAGEN PROGRAMA D: reemplaza src="" con tu imagen, ej: src="img/programa-glow.jpg" -->
+            <img src="" alt="Programa D — Resplandor Vital" loading="lazy">
+            D
+          </div>
           <span class="program-badge">Glow</span>
         </div>
       </div>
@@ -2124,6 +2323,10 @@
 
     <div class="spa-rituals">
       <div class="ritual-card reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 1: reemplaza src="" con tu imagen, ej: src="img/spa-basico.jpg" -->
+          <img src="" alt="Ritual de Bienestar Básico" loading="lazy">
+        </div>
         <div class="ritual-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity="0"/><path d="M7 12.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/><path d="M12 8V3M8 9.5L5.5 5.5M16 9.5l2.5-4"/></svg>
         </div>
@@ -2136,6 +2339,10 @@
       </div>
 
       <div class="ritual-card featured reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 2 (PREMIUM): reemplaza src="" con tu imagen, ej: src="img/spa-premium.jpg" -->
+          <img src="" alt="Experiencia Premium Regenerativa" loading="lazy">
+        </div>
         <div class="ritual-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
@@ -2148,6 +2355,10 @@
       </div>
 
       <div class="ritual-card reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 3 (CUMPLEAÑOS): reemplaza src="" con tu imagen, ej: src="img/spa-celebration.jpg" -->
+          <img src="" alt="Golden Celebration — Ritual de Cumpleaños" loading="lazy">
+        </div>
         <div class="ritual-icon">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
@@ -2482,26 +2693,36 @@
     document.body.style.overflow = '';
   }
 
-  // Active nav link highlighting on scroll
+  // Active nav link + section dots + mobile tabs highlighting on scroll
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionDots = document.querySelectorAll('.section-dot');
+  const sectionStabs = document.querySelectorAll('.section-tabs .stab');
+
   function highlightNav() {
-    const scrollPos = window.scrollY + 120;
+    const scrollPos = window.scrollY + 150;
     sections.forEach(section => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
+        const href = '#' + id;
         navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('active');
+          link.classList.toggle('active', link.getAttribute('href') === href);
+        });
+        sectionDots.forEach(dot => {
+          dot.classList.toggle('active', dot.getAttribute('href') === href);
+        });
+        sectionStabs.forEach(tab => {
+          tab.classList.toggle('active', tab.getAttribute('href') === href);
+          if (tab.getAttribute('href') === href) {
+            tab.scrollIntoView({ inline: 'nearest', behavior: 'smooth' });
           }
         });
       }
     });
   }
-  window.addEventListener('scroll', highlightNav);
+  window.addEventListener('scroll', highlightNav, { passive: true });
   highlightNav();
 </script>
 </body>
