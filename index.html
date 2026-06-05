@@ -1684,18 +1684,22 @@
   html {
     scroll-snap-type: y mandatory;
     scrollbar-width: none;
+    overflow-y: scroll;
   }
   html::-webkit-scrollbar { display: none; }
+
+  /* Cada sección ocupa al menos una pantalla completa */
   section {
+    min-height: 100vh;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    scroll-margin-top: 0;
   }
+
   footer {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-  /* El trust-bar fluye junto al hero visualmente */
+  /* El trust-bar fluye con el hero, sin punto de snap propio */
   .trust-bar { scroll-snap-align: none; }
 
   /* ===== BARRA DE SECCIONES (MÓVIL) ===== */
