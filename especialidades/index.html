@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Especialidades | Golden Spa — Guayaquil</title>
+  <meta name="description" content="Especialidades de ingeniería cutánea en Golden Spa Guayaquil: hidratación, bioestimulación, control de acné, depilación definitiva y rituales de Día de Spa.">
+  <meta name="theme-color" content="#C5A255">
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230D0D0B'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='serif' font-size='20' font-weight='300' fill='%23C5A255'%3EG%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Marcellus&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <svg viewBox="0 0 80 80" fill="none">
+    <path d="M40 10 C40 10 55 25 55 40 C55 55 40 65 40 65 C40 65 25 55 25 40 C25 25 40 10 40 10Z" stroke="#C5A255" stroke-width="0.8" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M40 15 C40 15 50 27 50 38 C50 50 40 58 40 58 C40 58 30 50 30 38 C30 27 40 15 40 15Z" stroke="#E4CA82" stroke-width="0.5" opacity="0.4">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+    </path>
+    <circle cx="40" cy="40" r="3" fill="#C5A255" opacity="0.5">
+      <animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+  <span class="preloader-text">Golden Spa</span>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Cerrar menú">
+    <svg viewBox="0 0 24 24"><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></svg>
+  </button>
+  <a href="../" onclick="closeMobileMenu()">Inicio</a>
+  <a href="../nosotros/" onclick="closeMobileMenu()">Nosotros</a>
+  <a href="../programas/" onclick="closeMobileMenu()">Programas</a>
+  <a href="../especialidades/" onclick="closeMobileMenu()">Especialidades</a>
+  <a href="../membresias/" onclick="closeMobileMenu()">Membresías</a>
+  <a href="../contacto/" onclick="closeMobileMenu()">Contacto</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav" role="navigation" aria-label="Navegación principal">
+  <div class="container">
+    <a href="../" class="nav-logo" aria-label="Golden Spa - Inicio">Golden <span>Spa</span></a>
+    <ul class="nav-links">
+      <li><a href="../nosotros/">Nosotros</a></li>
+      <li><a href="../metodologia/">Metodología</a></li>
+      <li><a href="../programas/">Programas</a></li>
+      <li><a href="../especialidades/">Especialidades</a></li>
+      <li><a href="../membresias/">Membresías</a></li>
+    </ul>
+    <a href="../contacto/" class="nav-cta">Agendar Cita</a>
+    <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- BARRA DE SECCIONES (MÓVIL / TABLET) -->
+<div class="section-tabs" id="sectionTabs" role="navigation" aria-label="Secciones de la página">
+  <a href="../" class="stab">Inicio</a>
+  <a href="../nosotros/" class="stab">Nosotros</a>
+  <a href="../programas/" class="stab">Programas</a>
+  <a href="../especialidades/" class="stab active">Especialidades</a>
+  <a href="../membresias/" class="stab">Membresías</a>
+  <a href="../contacto/" class="stab">Contacto</a>
+</div>
+
+<!-- Main content -->
+<main>
+
+<!-- ESPECIALIDADES -->
+<section class="specialties" id="especialidades">
+  <div class="container">
+    <div class="specialties-header reveal">
+      <div class="section-label">Protocolos Específicos</div>
+      <h2 class="section-title">Especialidades de<br>Ingeniería Cutánea</h2>
+      <p class="section-subtitle">Tecnología de vanguardia y activos de alta pureza para las necesidades únicas de tu piel</p>
+    </div>
+
+    <div class="spec-grid">
+      <!-- Hidratación -->
+      <div class="spec-category reveal">
+        <h3>Hidratación y Revitalización</h3>
+        <p>Restauración molecular de la barrera cutánea</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Ácido Hialurónico</h4>
+            <p>Infusión molecular de hidratación intensa que restaura la barrera cutánea desde la primera sesión. Ideal para pieles con tirantez o líneas finas por deshidratación.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Mascarillas de Alta Concentración</h4>
+            <p>Mascarilla de alta gama diseñada para retener la humedad celular y devolver la elasticidad perdida.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Ampollas con Activos Premium</h4>
+            <p>Concentrado activo que combina hidratación profunda con efecto tensor inmediato para firmeza y nutrición simultánea.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>Hidratación profunda y mascarillas humectantes.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>Plan integral con mesoterapia y productos intensivos.</p></div>
+        </div>
+      </div>
+
+      <!-- Bioestimulación -->
+      <div class="spec-category reveal">
+        <h3>Bioestimulación y Firmeza</h3>
+        <p>Antiage de nueva generación</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Bioestimulación con PRP</h4>
+            <p>Factores de crecimiento propios para regenerar la piel de forma natural, mejorando firmeza, tono y calidad dérmica.</p>
+          </div>
+          <div class="spec-item">
+            <h4>ADN de Salmón (PDRN)</h4>
+            <p>Biotecnología de punta para reparar el ADN celular y densificar la piel. Ideal para reconstrucción real.</p>
+          </div>
+          <div class="spec-item">
+            <h4>HIFU — Lifting No Invasivo</h4>
+            <p>Ultrasonido de alta intensidad que tensa las capas más profundas, redefiniendo el óvalo facial sin cirugía.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>Estimulación colágena y mesoterapia.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>Radiofrecuencia, HIFU, ADN y Exosomas.</p></div>
+        </div>
+      </div>
+
+      <!-- Control de Acné -->
+      <div class="spec-category reveal">
+        <h3>Ingeniería para Control de Acné</h3>
+        <p>Protocolos de purificación avanzada</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Limpieza Clínica Profesional</h4>
+            <p>Desincrustación técnica para liberar poros de impurezas y bacterias, previniendo futuros brotes de forma segura.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Renovación con Ácido Salicílico</h4>
+            <p>Peeling químico controlado que purifica el folículo y reduce la inflamación.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Sinergia Láser &amp; OPT</h4>
+            <p>Tecnología avanzada que actúa sobre la bacteria del acné y desinflama tejidos. Purificación con Ozono incluida.</p>
+          </div>
+        </div>
+        <div class="spec-packages">
+          <div class="spec-pkg"><strong>3 Sesiones</strong><p>IPL y limpieza profunda.</p></div>
+          <div class="spec-pkg"><strong>6 Sesiones</strong><p>OPT, ozono y tratamientos con láser.</p></div>
+        </div>
+      </div>
+
+      <!-- Depilación -->
+      <div class="spec-category reveal">
+        <h3>Depilación Definitiva</h3>
+        <p>Luz altamente selectiva, totalmente indoloro</p>
+        <div class="spec-items">
+          <div class="spec-item">
+            <h4>Tecnología de Luz Selectiva</h4>
+            <p>Sistemas que actúan directamente sobre el folículo piloso, garantizando una eliminación progresiva y permanente sin dañar los tejidos circundantes.</p>
+          </div>
+          <div class="spec-item">
+            <h4>Áreas Disponibles</h4>
+            <p>Axilas (6 sesiones), Bigote (6), Antebrazo (6), Bikini (10-12), Brasileño (12), Media pierna (8), Piernas completas (8), Facial completo (8).</p>
+          </div>
+          <div class="spec-item">
+            <h4>Paquetes Combinados</h4>
+            <p>Combinaciones personalizadas de múltiples áreas para un tratamiento integral con resultados progresivos y permanentes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DÍA DE SPA -->
+<section class="spa-day">
+  <div class="container">
+    <div class="spa-day-header reveal">
+      <div class="section-label">Experiencia Golden</div>
+      <h2 class="section-title">Día de Spa</h2>
+      <p class="section-subtitle">El arte de pausar: rituales exclusivos para reconectar con tu esencia y el bienestar de tu piel</p>
+    </div>
+
+    <div class="spa-rituals">
+      <div class="ritual-card reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 1: reemplaza src="" con tu imagen, ej: src="img/spa-basico.jpg" -->
+          <img src="" alt="Ritual de Bienestar Básico" loading="lazy">
+        </div>
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" opacity="0"/><path d="M7 12.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/><path d="M12 8V3M8 9.5L5.5 5.5M16 9.5l2.5-4"/></svg>
+        </div>
+        <h3>Ritual de Bienestar <small>Básico</small></h3>
+        <p>Una pausa esencial que combina la pureza de una limpieza facial hidratante con el calor sanador de las piedras calientes.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Limpieza clínica, mascarilla de hidratación profunda y masaje relax (30 min).</p>
+        </div>
+      </div>
+
+      <div class="ritual-card featured reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 2 (PREMIUM): reemplaza src="" con tu imagen, ej: src="img/spa-premium.jpg" -->
+          <img src="" alt="Experiencia Premium Regenerativa" loading="lazy">
+        </div>
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>Experiencia Premium <small>Regenerativa</small></h3>
+        <p>El lujo de la ciencia y el descanso. Un protocolo completo de renovación total que integra el poder de los Exosomas para una piel radiante.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Limpieza clínica, bioestimulación con Exosomas, mascarilla regeneradora y masaje de cuerpo completo (60 min).</p>
+        </div>
+      </div>
+
+      <div class="ritual-card reveal">
+        <div class="ritual-img-area">
+          <!-- IMAGEN RITUAL 3 (CUMPLEAÑOS): reemplaza src="" con tu imagen, ej: src="img/spa-celebration.jpg" -->
+          <img src="" alt="Golden Celebration — Ritual de Cumpleaños" loading="lazy">
+        </div>
+        <div class="ritual-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Golden Celebration <small>Cumpleaños</small></h3>
+        <p>Diseñado para honrar tu día especial. Todos los beneficios de nuestra experiencia Premium con detalles de cortesía para una celebración memorable.</p>
+        <div class="ritual-includes">
+          <strong>Incluye</strong>
+          <p>Protocolo Premium completo y cupcake de cortesía.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">Golden Spa ®</div>
+        <p>La ciencia es nuestra herramienta; tu confianza, nuestra mayor maestría. Centro de estética avanzada con criterio profesional en Guayaquil, Ecuador.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/golden_spa_gye" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://tiktok.com/@golden_spa_" target="_blank" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.28 8.28 0 0 0 4.76 1.51v-3.4a4.85 4.85 0 0 1-1-.11z"/></svg>
+          </a>
+          <a href="https://wa.me/5930982182609" target="_blank" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Horarios</h4>
+        <p>Lunes a Viernes: 9:00 — 19:00</p>
+        <p>Sábados: 9:00 — 15:00</p>
+        <p>Domingos: Cerrado</p>
+        <p style="margin-top:0.8rem; color: var(--gold); opacity: 0.7;">Citas con reserva previa</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="tel:+5930982182609">+593 098 218 2609</a>
+        <a href="https://instagram.com/golden_spa_gye" target="_blank">@golden_spa_gye</a>
+        <a href="https://tiktok.com/@golden_spa_" target="_blank">@golden_spa_</a>
+        <p style="margin-top:0.8rem;">Guayaquil, Ecuador</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Golden Spa — Guayaquil, Ecuador. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/5930982182609" target="_blank" class="whatsapp-float" aria-label="Contáctanos por WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="whatsapp-float-label">Agenda tu cita</span>
+</a>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
